@@ -60,6 +60,7 @@ namespace CLI_Game.Source.Core
         public void RenderScreen()
         {
             Console.SetCursorPosition(0, 0);
+            StringBuilder Pending = new();
             for(int y = 0; y < ScreenSize.Y; y++)
             {
 
@@ -74,7 +75,7 @@ namespace CLI_Game.Source.Core
                             Point Current = new(x, y);
                             if (Requests[R_index].Position == Current)
                             {
-                                Console.Write(Requests[R_index].Data);
+                                Pending.Append(Requests[R_index].Data);
                                 found = true;
                                 break;
                             }
@@ -86,25 +87,30 @@ namespace CLI_Game.Source.Core
                             continue;
                         }
                     }
-                    Console.Write(' ');
+                    Pending.Append(' ');
 
                 }
-                Console.Write('\n');
+                Pending.Append('\n');
             }
+
+            Console.Write(Pending.ToString());
+            
         }
 
         public void Clear()
         {
             Console.SetCursorPosition(0, 0);
+            StringBuilder Pending = new();
             for (int y = 0; y < ScreenSize.Y; y++)
             {
                 for (int x = 0; x < ScreenSize.X; x++)
                 {
-                    Console.Write(' ');
+                    Pending.Append(' ');
 
                 }
-                Console.Write('\n');
+                Pending.Append('\n');
             }
+            Console.Write(Pending.ToString());
         }
 
         public Render(Point screenSize,IEnumerable<Request>? requests=null)

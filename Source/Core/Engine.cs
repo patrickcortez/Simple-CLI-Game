@@ -25,7 +25,7 @@ namespace CLI_Game.Source.Core
         {
             if (!Console.KeyAvailable) return; 
 
-            ConsoleKeyInfo Current = Console.ReadKey();
+            ConsoleKeyInfo Current = Console.ReadKey(true);
 
             if(Current.Key is ConsoleKey.LeftArrow && Player.Position.X > 0)
             {
